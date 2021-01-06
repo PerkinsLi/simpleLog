@@ -16,7 +16,7 @@ public class DemoCOntroller {
     LogServiceImpl logService;
 
     @RequestMapping("log")
-    @SimpleLog(level = "ERROR")
+    @SimpleLog
     public Integer simpleLog(String name, String age, String sex){
         logService.setName(name);
         return 12;
