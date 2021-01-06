@@ -1,17 +1,26 @@
 # simplelog
 
 #### 介绍
-基于spring aop 实现的日志打印工具
+基于spring aop 实现的日志打印工具，目前只支持log4j2
 
-#### 软件架构
-
-
-
-#### 安装教程
+#### maven引入
+```
+        <dependency>
+            <groupId>com.github.perkinsli</groupId>
+            <artifactId>simplelog</artifactId>
+            <version>{version}</version>
+        </dependency>
+```
 
 #### 使用说明
+在方法上加上@Simplelog注解即可
 
-
+``` java
+    @SimpleLog
+    public String setName(String name) {
+        return name;
+    }
+```
 
 #### 参与贡献
 
