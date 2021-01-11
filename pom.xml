@@ -15,6 +15,7 @@
     <description>for log is simple project for Spring Boot</description>
 
     <!--  将项目发布到maven中央仓库需要的一些配置 Start  -->
+    <!-- 开源协议   -->
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -22,6 +23,7 @@
         </license>
     </licenses>
 
+    <!--  项目的信息，GitHub地址，项目git克隆地址  -->
     <scm>
         <tag>master</tag>
         <url>https://github.com/PerkinsLi/simpleLog</url>
@@ -29,6 +31,7 @@
         <developerConnection>https://github.com/PerkinsLi</developerConnection>
     </scm>
 
+    <!--  开发者信息  -->
     <developers>
         <developer>
             <name>PerkinsLi</name>
@@ -37,6 +40,7 @@
         </developer>
     </developers>
 
+    <!--  maven仓库发布地址  -->
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
