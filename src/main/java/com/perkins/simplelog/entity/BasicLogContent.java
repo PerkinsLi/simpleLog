@@ -59,46 +59,45 @@ public class BasicLogContent {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this, mySerializeFilter, new SerializerFeature[0]);
+        return JSON.toJSONString(this, mySerializeFilter);
     }
 
     static class MySerializeFilter implements ValueFilter {
-        private final static String json_serialize_err = "can't_serialize_to_json_string";
+        private static final String _json_serialize_error = "can't_serialize_to_json_string";
 
         @Override
         public Object process(Object obj, String name, Object value) {
             if (value == null) {
-                return value;
-            } else if ("inputs".equals(name)) {
-                Object[] inputs = (Object[])value;
-                List<Object> inputsStringList = new ArrayList(inputs.length);
-                Object[] var9 = inputs;
-                int var8 = inputs.length;
+                return null;
+            }
 
-                for(int var7 = 0; var7 < var8; ++var7) {
-                    Object input = var9[var7];
-                    if (!(input instanceof ServletResponse)) {
-                        try {
-                            JSON.toJSONString(input);
-                            inputsStringList.add(input);
-                        } catch (Exception var11) {
-                            inputsStringList.add("can't_serialize_to_json_string");
-                        }
+            if ("input".equals(name)) {
+                Object[] inputs = (Object[]) value;
+                List<Object> inputsStringList = new ArrayList<>(inputs.length);
+                for (Object input : inputs) {
+                    if (input instanceof ServletResponse){
+                        continue;
+                    }
+                    try {
+                        JSON.toJSONString(input);
+                        inputsStringList.add(input);
+                    } catch (Exception e) {
+                        inputsStringList.add(_json_serialize_error);
                     }
                 }
-
                 return inputsStringList;
-            } else if ("output".equals(name)) {
+            }
+
+            if ("output".equals(name)) {
                 try {
                     JSON.toJSONString(value);
                     return value;
-                } catch (Exception var12) {
-                    var12.printStackTrace();
-                    return "can't_serialize_to_json_string";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return _json_serialize_error;
                 }
-            } else {
-                return value;
             }
+            return value;
         }
     }
 }

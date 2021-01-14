@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Perkins
  */
@@ -17,7 +19,7 @@ public class DemoCOntroller {
 
     @RequestMapping("log")
     @SimpleLog
-    public Integer simpleLog(String name, String age, String sex){
+    public Integer simpleLog(HttpServletRequest request, String name, String age, String sex){
         logService.setName(name);
         return 12;
     }
