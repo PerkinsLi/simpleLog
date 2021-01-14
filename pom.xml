@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.perkinsli</groupId>
     <artifactId>simplelog</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>simplelog</name>
     <description>for log is simple project for Spring Boot</description>
 
